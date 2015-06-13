@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 All your tabs
+    for tab in tabs
+      .row.tab
+        .col-xs-4
+          = tab.bar.name
+        .col-xs-4
+          = tab.ordered_at
+        .col-xs-4
+          if tab.is_open
+            a.btn.btn-default(href='/tabs/#{tab.id}', role='button') Settle Bill $#{tab.total_cost}
+          else
+            a(href='/tabs/#{tab.id}', role='button') View Bill $#{tab.total_cost}

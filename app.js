@@ -29,6 +29,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var barsController = require('./controllers/bars');
 var loadsController = require('./controllers/load');
+var tabsController = require('./controllers/tabs');
 
 /**
  * API keys and Passport configuration.
@@ -118,6 +119,7 @@ app.get('/load/down', loadsController.down);
 app.get('/bars', passportConf.isAuthenticated, barsController.index);
 app.get('/bars/:barId', passportConf.isAuthenticated, barsController.show);
 app.get('/bars/buy/:priceId', passportConf.isAuthenticated, barsController.buy);
+app.get('/tabs', passportConf.isAuthenticated, tabsController.index);
 
 
 /**

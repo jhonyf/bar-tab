@@ -2,7 +2,9 @@ var Bar = require('../models/Bar'),
   Price = require('../models/Price'),
   Round = require('../models/Round');
 
-// Displays all bars
+/**
+ * Displays all bars
+ */
 exports.index = function(req, res) {
   Bar.find({})
     .sort("name")
@@ -14,7 +16,9 @@ exports.index = function(req, res) {
     });
 };
 
-// Shows all products for given bar
+/**
+ * Shows all products for given bar
+ */
 exports.show = function(req, res) {
   Price.find({ bar: req.params.barId })
     .sort("name")
@@ -27,7 +31,9 @@ exports.show = function(req, res) {
     });
 };
 
-// Add product to the round
+/**
+ * Add product to the round
+ */
 exports.buy = function(req, res) {
   // find price of the product
   Price.findById(req.params.priceId, function (err, price) {
@@ -44,6 +50,9 @@ exports.buy = function(req, res) {
         actual_price: price.price,
         ordered_at: new Date()
       });
+
+      // running cost of all ordered drinks
+      round.total_cost = round.total_cost ? round.total_cost + price.price : price.price;
 
       // saves the round and re-display the bar
       round.save(function(err) {
