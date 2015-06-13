@@ -116,6 +116,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/load/up', loadsController.up);
 app.get('/load/down', loadsController.down);
 app.get('/bars', passportConf.isAuthenticated, barsController.index);
+app.get('/bars/:barId', passportConf.isAuthenticated, barsController.show);
 
 
 /**

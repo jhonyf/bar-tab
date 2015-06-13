@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Order your drinks
+    for price in prices
+      .row
+        .col-xs-4
+          = price.product.name
+        .col-xs-8
+          a.order-btn.btn.btn-default(href='/bars/buy/#{price._id}', role='button') Add $#{price.price}
