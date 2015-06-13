@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Ordered drinks
+    for order in orders
+      .row.tab
+        .col-xs-4
+          = order.ordered_at
+        .col-xs-4
+          = order.product.name
+        .col-xs-4
+          $#{order.actual_price}
+    .row.center
+      .col-md-12
+        if tab.is_open
+          a.btn.btn-default(href='/tabs/pay/#{tab.id}', role='button') Pay Bill $#{tab.total_cost}
+        else
+          b Bill Settled!
+

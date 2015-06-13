@@ -120,6 +120,8 @@ app.get('/bars', passportConf.isAuthenticated, barsController.index);
 app.get('/bars/:barId', passportConf.isAuthenticated, barsController.show);
 app.get('/bars/buy/:priceId', passportConf.isAuthenticated, barsController.buy);
 app.get('/tabs', passportConf.isAuthenticated, tabsController.index);
+app.get('/tabs/:tabId', passportConf.isAuthenticated, tabsController.show);
+app.get('/tabs/pay/:tabId', passportConf.isAuthenticated, tabsController.pay);
 
 
 /**
