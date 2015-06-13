@@ -28,6 +28,7 @@ var connectAssets = require('connect-assets');
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var barsController = require('./controllers/bars');
+var loadsController = require('./controllers/load');
 
 /**
  * API keys and Passport configuration.
@@ -112,6 +113,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * Bar Tap controllers
  */
+app.get('/load/up', loadsController.up);
+app.get('/load/down', loadsController.down);
 app.get('/bars', passportConf.isAuthenticated, barsController.index);
 
 
