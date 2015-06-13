@@ -62,9 +62,14 @@ exports.up = function(req, res) {
 };
 
 exports.down = function(req, res) {
-  Bar.remove({}, function(err){});
-  Product.remove({}, function(err){});
-  Price.remove({}, function(err){});
-  Round.remove({}, function(err){});
+  var errorHandler = function(err) {
+    console.log(err);
+  };
+
+  Bar.remove({}, errorHandler);
+  Product.remove({}, errorHandler);
+  Price.remove({}, errorHandler);
+  Round.remove({}, errorHandler);
+
   res.send('Migrated down');
 };

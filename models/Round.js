@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+  moment = require('moment');
 
 var orderedDrinkSchema = new mongoose.Schema({
   product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
@@ -14,5 +15,9 @@ var roundSchema = new mongoose.Schema({
   is_open: Boolean,
   total_cost: Number
 });
+
+roundSchema.methods.format_date = function(date) {
+  return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+};
 
 module.exports = mongoose.model('Round', roundSchema);

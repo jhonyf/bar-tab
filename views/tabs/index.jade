@@ -6,7 +6,7 @@ block content
     for tab in tabs
       .row.tab
         .col-xs-4
-          = tab.ordered_at
+          = tab.format_date(tab.ordered_at)
         .col-xs-4
           = tab.bar.name
         .col-xs-4

@@ -3,10 +3,10 @@ extends ../layout
 block content
   .page-header
     h3 Ordered drinks
-    for order in orders
+    for order, index in orders
       .row.tab
         .col-xs-4
-          = order.ordered_at
+          span #{index+1}. #{tab.format_date(order.ordered_at)}
         .col-xs-4
           = order.product.name
         .col-xs-4
