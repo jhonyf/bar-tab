@@ -9,3 +9,9 @@ block content
           = price.product.name
         .col-xs-8
           a.order-btn.btn.btn-default(href='/bars/buy/#{price.id}', role='button') Add $#{price.price}
+    .row
+      .center(style="padding-top: 15px")
+        if round
+          a.btn.btn-primary(href='/tabs/#{round.id}') Current Tab - #{round.ordered_beverages.length} drink(s)
+        else
+          span No open tab!

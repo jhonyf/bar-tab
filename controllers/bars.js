@@ -1,6 +1,7 @@
 var Bar = require('../models/Bar'),
   Price = require('../models/Price'),
-  Round = require('../models/Round');
+  Round = require('../models/Round'),
+  moment = require('moment');
 
 /**
  * Displays all bars
@@ -24,9 +25,12 @@ exports.show = function(req, res) {
     .sort("name")
     .populate("product")
     .exec(function(err, prices) {
-      res.render('bars/show', {
-        prices: prices,
-        title: 'Available Drinks'
+      Round.findOne({ user: req.user.id, bar: req.params.barId, is_open: true }, function (err, round) {
+        res.render('bars/show', {
+          round: round,
+          prices: prices,
+          title: 'Available Drinks'
+        });
       });
     });
 };
@@ -60,8 +64,11 @@ exports.buy = function(req, res) {
           .sort("name")
           .populate("product")
           .exec(function(err, prices) {
-            req.flash('info', { msg: 'Your drink was added for $' + price.price  });
+
+            ordered_time = moment().format("h:mm:ssa");
+            req.flash('info', { msg: 'Your drink was added for $' + price.price + ' at ' + ordered_time  });
             res.render('bars/show', {
+              round: round,
               prices: prices,
               title: 'Available Drinks'
             });
