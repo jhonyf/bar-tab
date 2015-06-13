@@ -3,3 +3,6 @@ extends ../layout
 block content
   .page-header
     h3 Choose a bar
+    for bar in bars
+      .bar
+        a.btn.btn-default(href='/bars/#{bar._id}', role='button')= bar.name
