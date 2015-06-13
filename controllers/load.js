@@ -1,6 +1,7 @@
-var Bar = require('../models/Bar');
-var Product = require('../models/Product');
-var Price = require('../models/Price');
+var Bar = require('../models/Bar'),
+  Product = require('../models/Product'),
+  Price = require('../models/Price'),
+  Round = require('../models/Round');
 
 exports.up = function(req, res) {
 
@@ -64,5 +65,6 @@ exports.down = function(req, res) {
   Bar.remove({}, function(err){});
   Product.remove({}, function(err){});
   Price.remove({}, function(err){});
+  Round.remove({}, function(err){});
   res.send('Migrated down');
 };

@@ -117,6 +117,7 @@ app.get('/load/up', loadsController.up);
 app.get('/load/down', loadsController.down);
 app.get('/bars', passportConf.isAuthenticated, barsController.index);
 app.get('/bars/:barId', passportConf.isAuthenticated, barsController.show);
+app.get('/bars/buy/:priceId', passportConf.isAuthenticated, barsController.buy);
 
 
 /**
