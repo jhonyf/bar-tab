@@ -1,5 +1,7 @@
 ##An online drinks ordering system
 
+Currently code can be run with a standlone mongodb. API requirements is outlined in https://gist.github.com/jhonyf/443d9e97432730c3d5d7 
+
 ####To deploy locally
 1. Git clone project
 1. Run `npm install`
